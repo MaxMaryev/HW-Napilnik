@@ -24,8 +24,11 @@ class Weapon
         _bulletsPerShot = bulletsPerShot;
     }
 
-    public void Fire(Player player)
+    public void PullTrigger(Player player)
     {
+        if (_weapon.NotEnoughAmmo)
+            return;
+
         _bullets -= _bulletsPerShot;
         player.TakeDamage(_damage);
     }
@@ -76,12 +79,9 @@ class Bot
 
     private void TryShoot(Player player)
     {
-        if (_weapon.NotEnoughAmmo)
-            return;
-
         if (player.IsDead)
             return;
 
-        _weapon.Fire(player);
+        _weapon.PullTrigger(player);
     }
 }
