@@ -39,7 +39,7 @@ class Player
 
     public Player(int health)
     {
-        if (_health <= 0)
+        if (health <= 0)
             throw new ArgumentOutOfRangeException("health <= 0!");
 
         _health = health;
